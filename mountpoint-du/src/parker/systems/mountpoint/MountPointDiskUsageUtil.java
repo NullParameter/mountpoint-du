@@ -7,9 +7,12 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.google.common.collect.Lists;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
+import parker.systems.mountpoint.json.FileUsageInfo;
+import parker.systems.mountpoint.json.FileUsageInfoGroup;
+import parker.systems.mountpoint.json.FileUsageInfoSerializer;
 
 public class MountPointDiskUsageUtil {
 
@@ -37,32 +40,12 @@ public class MountPointDiskUsageUtil {
 				.map(FileUsageInfo::fromPath)
 				.collect(Collectors.toList());
 		
-		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		Gson gson = new GsonBuilder()
+				.setPrettyPrinting()
+				.registerTypeAdapter(FileUsageInfo.class, new FileUsageInfoSerializer())
+				.create();
+		
 		System.out.println(gson.toJson(new FileUsageInfoGroup(fileUsages)));
-	}
-	
-	public static class FileUsageInfoGroup {
-		
-		public final List<FileUsageInfo> files;
-		
-		public FileUsageInfoGroup(List<FileUsageInfo> files) {
-			this.files = files;
-		}
-	}
-	
-	public static class FileUsageInfo {
-		
-		private final String path;
-		private final long usage;
-		
-		private FileUsageInfo(String filePath, long usage) {
-			this.path = filePath;
-			this.usage = usage;
-		}
-		
-		public static FileUsageInfo fromPath(Path p) {
-			return new FileUsageInfo(p.toString(), p.toFile().length());
-		}
 	}
 
 }
