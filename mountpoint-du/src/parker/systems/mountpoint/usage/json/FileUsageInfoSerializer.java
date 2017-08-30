@@ -10,6 +10,9 @@ import com.google.gson.JsonSerializer;
 
 import parker.systems.mountpoint.usage.FileUsageInfo;
 
+/**
+ * Custom JSON serializer for mapping the {@link FileUsageInfo} to have the filepath be the JSON object key.
+ */
 public class FileUsageInfoSerializer implements JsonSerializer<FileUsageInfo>{
 
 	@Override

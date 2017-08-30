@@ -8,6 +8,10 @@ import com.google.gson.GsonBuilder;
 
 import parker.systems.mountpoint.usage.json.FileUsageInfoSerializer;
 
+/**
+ * Used mostly as a container for a list of {@link FileUsageInfo} objects, to support the proper 
+ * JSON output.
+ */
 public class FileUsageInfoGroup {
 	
 	public final List<FileUsageInfo> files;

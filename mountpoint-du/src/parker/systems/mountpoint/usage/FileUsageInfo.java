@@ -4,6 +4,9 @@ import java.nio.file.Path;
 
 import org.assertj.core.util.VisibleForTesting;
 
+/**
+ * Mapping of filepath to disk usage.
+ */
 public class FileUsageInfo {
 	
 	private final String path;
