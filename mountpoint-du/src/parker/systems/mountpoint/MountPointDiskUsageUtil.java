@@ -24,6 +24,10 @@ public class MountPointDiskUsageUtil {
 		}
 	}
 	
+	/**
+	 * Given a single argument for an existing directory, return a JSON pretty-printed String 
+	 * representing the files usages of the provided directory.
+	 */
 	@VisibleForTesting
 	String execute(String[] args) {
 		
