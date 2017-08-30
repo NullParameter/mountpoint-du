@@ -7,6 +7,8 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.assertj.core.util.VisibleForTesting;
+
 import parker.systems.mountpoint.usage.FileUsageInfo;
 import parker.systems.mountpoint.usage.FileUsageInfoGroup;
 
@@ -22,7 +24,8 @@ public class MountPointDiskUsageUtil {
 		}
 	}
 	
-	private String execute(String[] args) {
+	@VisibleForTesting
+	String execute(String[] args) {
 		
 		final Path path = validateAndParseArguments(args);
 		List<FileUsageInfo> fileUsages = processMountPoint(path);
@@ -30,7 +33,8 @@ public class MountPointDiskUsageUtil {
 		return new FileUsageInfoGroup(fileUsages).toJson();
 	}
 	
-	private Path validateAndParseArguments(String[] args) throws IllegalArgumentException {
+	@VisibleForTesting
+	Path validateAndParseArguments(String[] args) throws IllegalArgumentException {
 		if (args.length != 1) {
 			throw new IllegalArgumentException("Please provide a single parameter for the mountpoint to be processed.");
 		}
@@ -51,7 +55,8 @@ public class MountPointDiskUsageUtil {
 	 * 
 	 * @throws MountPointProcessingException if there is any IO errors while processing the tree.
 	 */
-	private List<FileUsageInfo> processMountPoint(Path path) {
+	@VisibleForTesting
+	List<FileUsageInfo> processMountPoint(Path path) {
 		try {
 			return Files.walk(path)
 					.filter(Files::isRegularFile)
