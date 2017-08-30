@@ -1,4 +1,4 @@
-package parker.systems.mountpoint.json;
+package parker.systems.mountpoint.usage;
 
 import java.nio.file.Path;
 
