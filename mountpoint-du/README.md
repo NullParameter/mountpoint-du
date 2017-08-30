@@ -16,6 +16,7 @@ Dependencies include:
 # Notes
 
 * Made some assumptions about the requirements...
+	* A full-fledged program was wanted, not just a simple script.  I could have definitely done it a little more "quick and dirty", but decided to throw a little more design into it.
 	* If the requested path doesn't exist, or isn't a directory, then we exit with an error code and a message to syserr.
 	* Only the sizes of files are output, not the aggregate sizes of directories.
 	* Symlinks are not followed, as they are not _technically_ within the directory tree.  This is easily changed if we desire different behaviour.
