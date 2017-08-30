@@ -16,8 +16,8 @@ Dependencies include:
 # Notes
 
 * Made some assumptions about the requirements...
-** If the requested path doesn't exist, or isn't a directory, then we exit with an error code and a message to syserr.
-** Only the sizes of files are output, not the aggregate sizes of directories.
-** Symlinks are not followed, as they are not _technically_ within the directory tree.  This is easily changed if we desire different behaviour.
-** If an I/O error occurs at any point when processing the directory tree, likely due to a permissions issue, the program is aborted. (We could make the program a bit more involved and return partial results, or a null/sentinel value in the JSON for any file that had an issue.)
-** The requested JSON formatting was a bit odd, having an object for each path/usage pair, but the values within not being a key/value pair itself.  I took the liberty of correcting this to be valid JSON, though we can technically retain the old formatting if that is a requirement.
+	* If the requested path doesn't exist, or isn't a directory, then we exit with an error code and a message to syserr.
+	* Only the sizes of files are output, not the aggregate sizes of directories.
+	* Symlinks are not followed, as they are not _technically_ within the directory tree.  This is easily changed if we desire different behaviour.
+	* If an I/O error occurs at any point when processing the directory tree, likely due to a permissions issue, the program is aborted. (We could make the program a bit more involved and return partial results, or a null/sentinel value in the JSON for any file that had an issue.)
+	* The requested JSON formatting was a bit odd, having an object for each path/usage pair, but the values within not being a key/value pair itself.  I took the liberty of correcting this to be valid JSON, though we can technically retain the old formatting if that is a requirement.
